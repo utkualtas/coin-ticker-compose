@@ -7,4 +7,6 @@ interface CoinNetworkDataSource {
 
     suspend fun getCoins(): Result<List<Coin>>
 
+    suspend fun getCoinDetail(id: String): Result<Coin>
+
 }

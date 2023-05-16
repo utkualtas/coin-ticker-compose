@@ -20,6 +20,10 @@ class CoinRepositoryImpl @Inject constructor(
         return coinLocalDataSource.getAllCoinsFlow()
     }
 
+    override suspend fun getCoinDetail(id: String): Result<Coin> {
+        return coinNetworkDataSource.getCoinDetail(id)
+    }
+
     override suspend fun fetchCoins(): Result<Unit> {
         val networkResult = coinNetworkDataSource.getCoins()
         if (networkResult is Result.Error) return networkResult.toUnit()

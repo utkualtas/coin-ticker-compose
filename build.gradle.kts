@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.hilt) apply false
 }
-true // Needed to make the Suppress annotation work for the plugins block
-
 
 fun isNonStable(version: String): Boolean {
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }

@@ -31,6 +31,9 @@ fun NavGraphBuilder.coinDetailScreen() = composable(
     val state by viewModel.uIState.collectAsState()
     CoinDetailScreen(
         state = state,
+        onRefresh = viewModel::onRefresh,
+        onIncreaseRefreshRate = viewModel::onIncreaseRefreshRate,
+        onDecreaseRefreshRate = viewModel::onDecreaseRefreshRate
     )
 }
 

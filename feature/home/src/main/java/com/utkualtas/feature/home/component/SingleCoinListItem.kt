@@ -14,6 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.utkualtas.core.model.Coin
+import com.utkualtas.core.model.MarketData
 import com.utkualtas.core.ui.theme.CoinTickerTheme
 
 @Composable
@@ -60,6 +61,10 @@ private fun SingleCoinListItemPreview() {
             id = "1",
             name = "Bitcoin",
             symbol = "BTC",
+            marketData = MarketData(emptyMap(), emptyMap()),
+            description = emptyMap(),
+            image = null,
+            hashingAlgorithm = "",
         )
         SingleCoinListItem(coin = coin, onCoinClick = {})
     }

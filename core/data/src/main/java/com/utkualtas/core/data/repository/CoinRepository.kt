@@ -9,4 +9,6 @@ interface CoinRepository {
     suspend fun fetchCoins(): Result<Unit>
     fun getCoinsFlow(): Flow<List<Coin>>
 
+    suspend fun getCoinDetail(id: String): Result<Coin>
+
 }

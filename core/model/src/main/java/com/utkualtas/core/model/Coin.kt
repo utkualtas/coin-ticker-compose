@@ -4,4 +4,8 @@ data class Coin(
     val id: String,
     val symbol: String,
     val name: String,
+    val hashingAlgorithm: String,
+    val description: Map<String, String>,
+    val image: Image? = null,
+    val marketData: MarketData? = null,
 )
