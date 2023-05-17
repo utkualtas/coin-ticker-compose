@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.utkualtas.app.navigation.CoinTickerNavHost
+import com.utkualtas.app.ui.component.CoinTickerBottomBar
 import com.utkualtas.core.ui.component.CoinTickerTopAppBar
 
 @Composable
@@ -41,6 +42,9 @@ fun CoinTickerApp(
                 navigationIcon = navigationIcon,
                 onNavigationIconClick = appState::onBackClick
             )
+        },
+        bottomBar = {
+            CoinTickerBottomBar(navController = appState.navController)
         }
     ) { innerPaddings ->
         CoinTickerNavHost(

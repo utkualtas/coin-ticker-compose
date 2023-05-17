@@ -5,7 +5,9 @@ import androidx.compose.runtime.Stable
 import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.utkualtas.feature.authentication.authenticationRoute
 import com.utkualtas.feature.coin_detail.coinDetailRoute
+import com.utkualtas.feature.favourite.favouritesRoute
 import com.utkualtas.feature.home.homeRoute
 
 @Stable
@@ -18,6 +20,8 @@ data class CoinTickerAppState(val navController: NavHostController) {
     val appBarTitle: String
         @Composable get() = when (currentDestination?.route) {
             homeRoute -> "Home"
+            favouritesRoute -> "My Coins"
+            authenticationRoute -> "Login & Register"
             coinDetailRoute() -> "Detail"
             else -> ""
         }

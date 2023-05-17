@@ -1,7 +1,10 @@
+// TODO: Remove once https://youtrack.jetbrains.com/issue/KTIJ-19369 is fixed
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("utkualtas.android.application")
     id("utkualtas.android.application.compose")
     id("utkualtas.android.hilt")
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -43,6 +46,8 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":feature:home"))
     implementation(project(":feature:coin-detail"))
+    implementation(project(":feature:favourite"))
+    implementation(project(":feature:authentication"))
 
     // AndroidX
     implementation(libs.androidx.core.ktx)
@@ -54,8 +59,6 @@ dependencies {
 
     // Firebase
     implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.crashlytics)
-    implementation(libs.firebase.analytics)
 
     implementation(libs.splitties.pack.base)
 

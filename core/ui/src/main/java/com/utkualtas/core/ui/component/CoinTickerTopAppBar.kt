@@ -98,7 +98,7 @@ fun CoinTickerTopAppBar(
 
 @Preview
 @Composable
-private fun BisuAppBarPreview() {
+private fun CoinTickerAppBarPreview() {
     CoinTickerTheme {
         CoinTickerTopAppBar(
             title = "GİRİŞ YAP",

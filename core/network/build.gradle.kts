@@ -14,6 +14,9 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:model"))
 
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp.logging)

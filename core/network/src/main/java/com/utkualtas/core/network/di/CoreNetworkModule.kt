@@ -1,6 +1,9 @@
 package com.utkualtas.core.network.di
 
 import android.content.Context
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.utkualtas.core.network.BuildConfig
 import com.utkualtas.core.network.api.CoinApi
@@ -67,6 +70,10 @@ object CoreNetworkModule {
             .client(okHttpClient)
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseAuth(): FirebaseAuth = Firebase.auth
 
     @Provides
     @Singleton

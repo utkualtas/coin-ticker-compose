@@ -20,7 +20,7 @@ package com.utkualtas
  * This is shared between :app and :benchmarks module to provide configurations type safety.
  */
 @Suppress("unused")
-enum class BisuBuildType(val applicationIdSuffix: String? = null) {
+enum class CoinTickerBuildType(val applicationIdSuffix: String? = null) {
     DEBUG(".debug"),
     RELEASE,
     BENCHMARK(".benchmark")
