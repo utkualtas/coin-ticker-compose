@@ -20,7 +20,7 @@ enum class CoinTickerFlavor(
     val applicationIdSuffix: String? = null,
 ) {
     dev(FlavorDimension.contentType),
-    prod(FlavorDimension.contentType, ".prod")
+    prod(FlavorDimension.contentType, "")
 }
 
 fun Project.configureFlavors(
