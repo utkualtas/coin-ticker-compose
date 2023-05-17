@@ -40,11 +40,14 @@ fun CoinTickerApp(
             CoinTickerTopAppBar(
                 title = appState.appBarTitle,
                 navigationIcon = navigationIcon,
-                onNavigationIconClick = appState::onBackClick
+                onNavigationIconClick = appState::onNavigationIconClick
             )
         },
         bottomBar = {
-            CoinTickerBottomBar(navController = appState.navController)
+            CoinTickerBottomBar(
+                navController = appState.navController,
+                isVisible = appState.showBottomBar
+            )
         }
     ) { innerPaddings ->
         CoinTickerNavHost(

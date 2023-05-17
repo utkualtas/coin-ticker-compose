@@ -11,6 +11,7 @@ import com.utkualtas.feature.coin_detail.navigateToCoinDetail
 import com.utkualtas.feature.favourite.favouritesScreen
 import com.utkualtas.feature.home.homeRoute
 import com.utkualtas.feature.home.homeScreen
+import com.utkualtas.feature.home.navigateHome
 
 const val rootGraphRoute = "root"
 
@@ -28,10 +29,16 @@ fun CoinTickerNavHost(
         route = rootGraphRoute
     ) {
 
-        authenticationScreen(onNavigateBack = onBackClick)
+        authenticationScreen(
+            onNavigateBack = onBackClick,
+            onNavigateHome = navController::navigateHome
+        )
         homeScreen(onNavigateToCoinDetail = navController::navigateToCoinDetail)
-        favouritesScreen(onNavigateToLogin = navController::navigateToAuthentication)
-        coinDetailScreen()
+        favouritesScreen(
+            onNavigateToLogin = navController::navigateToAuthentication,
+            onNavigateToCoinDetail = navController::navigateToCoinDetail
+        )
+        coinDetailScreen(onNavigateToAuthentication = navController::navigateToAuthentication)
     }
 
 

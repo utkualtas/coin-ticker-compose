@@ -24,10 +24,18 @@ class FavouritesViewModel @Inject constructor(
 
     init {
         collectAuthStatus()
+        collectFavourites()
     }
 
+    private fun collectFavourites() = userRepository.getFavouritesFlow()
+        .onEach { coins -> mUIState.update { it.copy(coins = coins) } }
+        .launchIn(viewModelScope)
+
     private fun collectAuthStatus() = userRepository.userAuthenticatedFlow
-        .onEach { mUIState.update { state -> state.copy(isAuthenticated = it) } }
+        .onEach { isAuthenticated ->
+            mUIState.update { state -> state.copy(isAuthenticated = isAuthenticated) }
+            if (isAuthenticated) collectFavourites()
+        }
         .launchIn(viewModelScope)
 
 

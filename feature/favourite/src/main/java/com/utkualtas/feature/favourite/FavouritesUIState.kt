@@ -1,3 +1,8 @@
 package com.utkualtas.feature.favourite
 
-data class FavouritesUIState(val isAuthenticated: Boolean)
+import com.utkualtas.core.model.Coin
+
+data class FavouritesUIState(
+    val coins: List<Coin> = emptyList(),
+    val isAuthenticated: Boolean,
+)

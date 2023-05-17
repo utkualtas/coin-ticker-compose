@@ -11,6 +11,7 @@ const val authenticationRoute = "authentication"
 
 fun NavGraphBuilder.authenticationScreen(
     onNavigateBack: () -> Unit,
+    onNavigateHome: () -> Unit,
 ) = composable(
     route = authenticationRoute,
 ) {
@@ -22,6 +23,7 @@ fun NavGraphBuilder.authenticationScreen(
         onEmailChange = viewModel::onEmailChange,
         onPasswordChange = viewModel::onPasswordChange,
         onNavigateBack = onNavigateBack,
+        onNavigateHome = onNavigateHome,
         onSwitchLoginRegister = viewModel::onSwitchLoginRegister,
         onProceed = viewModel::onProceed,
     )

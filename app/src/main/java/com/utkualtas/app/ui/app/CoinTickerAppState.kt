@@ -9,6 +9,7 @@ import com.utkualtas.feature.authentication.authenticationRoute
 import com.utkualtas.feature.coin_detail.coinDetailRoute
 import com.utkualtas.feature.favourite.favouritesRoute
 import com.utkualtas.feature.home.homeRoute
+import com.utkualtas.feature.home.navigateHome
 
 @Stable
 data class CoinTickerAppState(val navController: NavHostController) {
@@ -29,11 +30,26 @@ data class CoinTickerAppState(val navController: NavHostController) {
     val showNavigationIcon: Boolean
         @Composable get() = when (currentDestination?.route) {
             coinDetailRoute() -> true
+            authenticationRoute -> true
+            else -> false
+        }
+
+    val showBottomBar: Boolean
+        @Composable get() = when (currentDestination?.route) {
+            homeRoute -> true
+            favouritesRoute -> true
             else -> false
         }
 
     fun onBackClick() {
         navController.popBackStack()
+    }
+
+    fun onNavigationIconClick() {
+        when (navController.currentDestination?.route) {
+            authenticationRoute -> navController.navigateHome()
+            else -> onBackClick()
+        }
     }
 
 }

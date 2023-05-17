@@ -7,6 +7,8 @@ data class CoinDetailUIState(
     val coin: Coin? = null,
     val marketData: List<SingleMarketData> = emptyList(),
     val refreshRateInSecond: Int = 5,
+    val isFavourite: Boolean = false,
+    val isAuthenticated: Boolean = false,
 ) {
 
     val description: String

@@ -1,4 +1,4 @@
-package com.utkualtas.feature.home.component
+package com.utkualtas.core.ui.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

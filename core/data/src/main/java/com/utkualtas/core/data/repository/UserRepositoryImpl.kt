@@ -1,10 +1,12 @@
 package com.utkualtas.core.data.repository
 
+import com.utkualtas.core.model.Coin
 import com.utkualtas.core.model.Result
 import com.utkualtas.core.model.onSuccess
 import com.utkualtas.core.model.toUnit
 import com.utkualtas.core.network.source.UserNetworkDataSource
 import it.czerwinski.android.hilt.annotations.Bound
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -37,6 +39,18 @@ class UserRepositoryImpl @Inject constructor(
         return userNetworkDataSource.signInWithEmailAndPassword(email, password)
             .onSuccess { mUserAuthenticatedFlow.emit(true) }
             .toUnit()
+    }
+
+    override suspend fun addCoinToFavourites(coin: Coin): Result<Unit> {
+        return userNetworkDataSource.addCoinToFavourites(coin)
+    }
+
+    override suspend fun removeCoinFromFavourites(coin: Coin): Result<Unit> {
+        return userNetworkDataSource.removeCoinFromFavourites(coin)
+    }
+
+    override fun getFavouritesFlow(): Flow<List<Coin>> {
+        return userNetworkDataSource.getFavouritesInRealTime()
     }
 
 

@@ -24,7 +24,9 @@ internal class CoinDetailArgs(val coinId: String) {
     constructor(savedStateHandle: SavedStateHandle) : this(checkNotNull(savedStateHandle[coinDetailPathParam]) as String)
 }
 
-fun NavGraphBuilder.coinDetailScreen() = composable(
+fun NavGraphBuilder.coinDetailScreen(
+    onNavigateToAuthentication: () -> Unit,
+) = composable(
     route = coinDetailRoute(),
 ) {
     val viewModel: CoinDetailViewModel = hiltViewModel()
@@ -33,7 +35,9 @@ fun NavGraphBuilder.coinDetailScreen() = composable(
         state = state,
         onRefresh = viewModel::onRefresh,
         onIncreaseRefreshRate = viewModel::onIncreaseRefreshRate,
-        onDecreaseRefreshRate = viewModel::onDecreaseRefreshRate
+        onDecreaseRefreshRate = viewModel::onDecreaseRefreshRate,
+        onFavouriteClick = viewModel::onFavouriteClick,
+        onNavigateToAuthentication = onNavigateToAuthentication,
     )
 }
 

@@ -2,10 +2,13 @@ package com.utkualtas.feature.coin_detail.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,13 +19,13 @@ import androidx.compose.ui.unit.dp
 import com.utkualtas.core.ui.theme.CoinTickerTheme
 import com.utkualtas.feature.coin_detail.model.SingleMarketData
 
-@Composable
-fun MarketData(
+
+fun LazyListScope.marketData(
     modifier: Modifier = Modifier,
     marketData: List<SingleMarketData>,
 ) {
 
-    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+    item {
         Row(
             modifier = modifier
                 .fillMaxWidth()
@@ -38,7 +41,7 @@ fun MarketData(
                 modifier = Modifier
                     .weight(0.24f)
                     .alignByBaseline(),
-                text = "Currency",
+                text = "CURRENCY",
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSecondary,
                 maxLines = 1,
@@ -48,7 +51,7 @@ fun MarketData(
                 modifier = Modifier
                     .weight(0.38f)
                     .alignByBaseline(),
-                text = "Price",
+                text = "PRICE",
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSecondary,
                 maxLines = 1,
@@ -63,11 +66,13 @@ fun MarketData(
                 color = MaterialTheme.colorScheme.onSecondary,
                 maxLines = 1,
             )
+        }
+        Spacer(modifier = Modifier.padding(top = 4.dp))
+    }
 
-        }
-        marketData.forEach {
-            SingleMarketDataItem(singleMarketData = it)
-        }
+    items(items = marketData) {
+        SingleMarketDataItem(singleMarketData = it)
+        Spacer(modifier = Modifier.padding(top = 4.dp))
     }
 
 }
@@ -84,6 +89,8 @@ fun MarketDataPreview() {
                 priceChangePercentage24H = "4"
             )
         }
-        MarketData(marketData = data)
+        LazyColumn {
+            marketData(marketData = data)
+        }
     }
 }

@@ -10,6 +10,7 @@ const val favouritesRoute = "favourites"
 
 fun NavGraphBuilder.favouritesScreen(
     onNavigateToLogin: () -> Unit,
+    onNavigateToCoinDetail: (id: String) -> Unit,
 ) = composable(
     route = favouritesRoute,
 ) {
@@ -18,5 +19,6 @@ fun NavGraphBuilder.favouritesScreen(
     FavouritesScreen(
         state = state,
         onNavigateToLogin = onNavigateToLogin,
+        onNavigateToCoinDetail = onNavigateToCoinDetail,
     )
 }

@@ -35,7 +35,11 @@ val bottomNavItems = listOf(
 )
 
 @Composable
-fun CoinTickerBottomBar(navController: NavController) {
+fun CoinTickerBottomBar(
+    navController: NavController,
+    isVisible: Boolean,
+) {
+    if (!isVisible) return
     val backStackEntry = navController.currentBackStackEntryAsState()
 
     NavigationBar(

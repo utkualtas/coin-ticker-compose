@@ -1,5 +1,6 @@
 package com.utkualtas.feature.authentication
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.utkualtas.core.ui.DevicePreviews
 import com.utkualtas.core.ui.theme.CoinTickerTheme
@@ -31,6 +33,7 @@ fun AuthenticationScreen(
     onEmailChange: (value: String) -> Unit,
     onPasswordChange: (value: String) -> Unit,
     onNavigateBack: () -> Unit,
+    onNavigateHome: () -> Unit,
     onSwitchLoginRegister: () -> Unit,
     onProceed: () -> Unit,
 ) {
@@ -41,7 +44,10 @@ fun AuthenticationScreen(
             snackbarHostState.showSnackbar(state.message)
             onMessageShown()
         }
+    }
 
+    BackHandler(true) {
+        onNavigateHome()
     }
 
     LaunchedEffect(state.navigateBack) {
@@ -74,6 +80,7 @@ fun AuthenticationScreen(
                     .padding(top = 6.dp),
                 label = { Text("Password") },
                 value = state.password,
+                visualTransformation = PasswordVisualTransformation(),
                 onValueChange = onPasswordChange
             )
 
@@ -113,6 +120,7 @@ private fun AuthenticationScreenPreview() {
             onEmailChange = {},
             onPasswordChange = {},
             onNavigateBack = {},
+            onNavigateHome = {},
             onSwitchLoginRegister = {},
             onProceed = {},
         )

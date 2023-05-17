@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.utkualtas.core.ui.DevicePreviews
 import com.utkualtas.feature.home.component.SearchBar
-import com.utkualtas.feature.home.component.SingleCoinListItem
+import com.utkualtas.core.ui.common.SingleCoinListItem
 
 @Composable
 fun HomeScreen(

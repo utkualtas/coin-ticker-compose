@@ -35,7 +35,7 @@ fun SingleMarketDataItem(
             modifier = Modifier
                 .weight(0.24f)
                 .alignByBaseline(),
-            text = singleMarketData.name,
+            text = singleMarketData.name.uppercase(),
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             maxLines = 1,

@@ -1,8 +1,9 @@
 package com.utkualtas.core.network.di
 
-import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.utkualtas.core.network.BuildConfig
@@ -10,7 +11,6 @@ import com.utkualtas.core.network.api.CoinApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -28,15 +28,11 @@ object CoreNetworkModule {
 
     @Provides
     @Singleton
-    internal fun provideOkHttpClient(
-        @ApplicationContext context: Context,
-        //requestInterceptor: RequestInterceptor,
-    ): OkHttpClient {
+    internal fun provideOkHttpClient(): OkHttpClient {
         val okHttpBuilder = OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
-            //.addInterceptor(requestInterceptor)
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
 
         if (BuildConfig.DEBUG) {
@@ -74,6 +70,11 @@ object CoreNetworkModule {
     @Provides
     @Singleton
     fun provideFirebaseAuth(): FirebaseAuth = Firebase.auth
+
+    @Provides
+    @Singleton
+    fun provideFirebaseFirestore(): FirebaseFirestore = Firebase.firestore
+
 
     @Provides
     @Singleton
